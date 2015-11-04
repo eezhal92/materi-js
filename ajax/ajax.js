@@ -8,7 +8,10 @@ function ajax(method, url, formData, callback) {
 	// cek ketika state berubah
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			callback(xmlhttp.responseText);
+			var response = xmlhttp.responseText;
+
+			console.log(response); // print what we've got
+			callback(response);
 		}
 	};
 
