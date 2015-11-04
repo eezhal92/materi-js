@@ -10,7 +10,7 @@ function ajax(method, url, formData, callback) {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var response = xmlhttp.responseText;
 
-			console.log(response); // print what we've got
+			console.log("Response: ", response, ". Tipe:", typeof response); // print what we've got
 			callback(response);
 		}
 	};
@@ -21,13 +21,16 @@ function ajax(method, url, formData, callback) {
 }
 
 function generateList(data) {
-	var lists = document.createElement('ul');
+	var containerList = document.createElement('div');
+	var ul = document.createElement('ul');
+
+	containerList.appendChild(ul);
 	
 	if(Array.isArray(data)) {
 		data.forEach(function(item, index) {
 			var li = document.createElement('li');
 			li.innerHTML = "Nama: " + item.name + ". Umur: " + item.age;
-			lists.appendChild(li);
+			ul.appendChild(li);
 		});
 	} else {
 		var title = document.createElement('h2');
@@ -35,10 +38,11 @@ function generateList(data) {
 		
 		title.innerHTML = "IT superman kali ini adalah:";
 		li.innerHTML = "Nama: " + data.name + ". Umur: " + data.age;
-		lists.appendChild(title).appendChild(li);
+		containerList.insertBefore(title, ul);
+		ul.appendChild(li);
 	}
 
-	return lists;
+	return containerList;
 }
 
 function clearDom() {
