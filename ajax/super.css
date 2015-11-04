@@ -1,0 +1,39 @@
+body {
+	font-family: 'Segoe UI';
+}
+
+#app {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#app b {
+	font-size: 28px;
+	margin-bottom: 15px;
+}
+
+#app ul li {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+div.alert {
+	padding: 10px 20px;
+	border-radius: 4px;
+	border: 1px solid #81CFE0;
+}
+
+div.alert.alert-info {
+	background-color: #C5EFF7;
+	color: #446CB3;
+}
+
+.btn-super {
+	padding: 10px 20px;
+	color: #fff;
+	font-weight: bold;
+	background-color: #EF4836;
+	border: none;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
