@@ -56,8 +56,13 @@ function clearDom() {
 var btnDaftar = document.querySelector('#btn-daftar');
 var btnRandom = document.querySelector('#btn-random');
 
+function foo(data) {
+  console.log("foo says", data);
+}
+
 btnDaftar.addEventListener('click', function() {
 	clearDom();
+
 
 	ajax('get', 'server.php', '', function(data) {
 		var lists = generateList(JSON.parse(data));

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS - DOM</title>
+</head>
+<body>
+	
+	<h1>Register Now!</h1>
+
+	<form action="" id="register">
+		<div class="form-control">
+			<input type="text" name="username" placeholder="Your Username">
+		</div>
+
+		<div class="form-control">
+			<input type="password" name="password" placeholder="Your Password">
+		</div>
+
+		<div class="form-control">
+			<input type="submit" value="Register">
+		</div>
+
+	</form>
+
+	<script type="text/javascript">
+		// click, mouseover, mouseout dll
+		var form = document.getElementById('register');
+
+		form.addEventListener('submit', function(evt) {
+			evt.preventDefault();
+
+			var data = "namaPengguna=" + this.username.value + "&kataKunci=" + this.password.value;
+
+			request('post', 'http://localhost:9000/facebook.php', data, function(response) {
+				console.log(response);
+			});
+			
+
+			// evt.target.style.display = 'none';
+			// alert();
+		});
+
+		function request(method, url, data, callback) {
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange = function() {
+				var state = xmlhttp.readyState;
+				if(state == 0) {
+					// do something here
+					console.log('belum siap')
+				} else if(state == 1) {
+					// something else
+				}
+
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					callback(xmlhttp.responseText);
+				}
+			}
+
+			xmlhttp.open(method, url, true);
+			xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xmlhttp.send(data);
+		}
+
+	</script>
+</body>
+</html>

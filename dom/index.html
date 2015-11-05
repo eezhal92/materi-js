@@ -6,7 +6,62 @@
 </head>
 <body>
 	<h1 id="headline">Hurry Up! Click Me!</h1>
+	
+	<button id="tombol">Click Saya</button>
+	
+	<form action="" id="formulir">
+		<input type="text" name="username" placeholder="username" autofocus>
+		<input type="password" name="password" placeholder="password">
+		<input type="submit" value="Daftar	">
+	</form>
 
-	<script type="text/javascript" src="dom.js"></script>
+
+	<!-- <script type="text/javascript" src="dom.js"></script> -->
+	<script type="text/javascript">
+		var evt;
+
+		function rubah(e) {
+			var h1 = document.querySelector('#headline');
+			// rubah warna h1#headline menjadi biru
+			h1.style.color = 'blue';
+			// tambah pada h1#headline attribute class .foo
+			h1.setAttribute('class', 'foo');
+			// tambah pada h1#headline style: font-size: 90px; font-style: italic;
+			h1.style.fontSize = '90px';
+			h1.style.fontStyle = 'italic';
+			// tambah pada body 4 paragraf
+			var body = document.querySelector('body');
+			var p, fragment = document.createDocumentFragment();
+
+			for(var i = 0; i < 4; i++) {
+				p = document.createElement('p');
+				p.innerHTML = 'lorem ipsum sit amet dolor.';
+				fragment.appendChild(p);
+			}
+
+			body.appendChild(fragment);
+			// tambah sebelum paragraf pertama strong
+			var strong = document.createElement('strong');
+			strong.innerHTML = 'Tebal';
+
+			var paragrafPertama = document.querySelectorAll('p')[0];
+
+			body.insertBefore(strong, paragrafPertama);
+		}
+
+		var tombol = document.getElementById('tombol');
+
+		tombol.addEventListener('click', rubah);		
+
+		var form = document.getElementById('formulir');
+
+		function handleFormSubmit(e) {
+			e.preventDefault();
+			// this adalah dom yg kita attach event
+			alert('uname: ' + this.username.value + '. pass: ' + this.password.value);
+		}
+
+		form.addEventListener('submit', handleFormSubmit);
+	</script>
 </body>
 </html>
